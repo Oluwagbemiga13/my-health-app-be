@@ -4,9 +4,13 @@ import com.example.myhealthappbe.repository.SymptomRepository;
 import com.example.myhealthappbe.repository.SystemRepository;
 import com.example.myhealthappbe.sympthoms.Symptom;
 import com.example.myhealthappbe.sympthoms.System;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -16,17 +20,48 @@ public class TestService {
     private final SymptomRepository symptomRepository;
     private final SystemRepository systemRepository;
 
+    private final EntityManagerFactory entityManagerFactory;
+
     @Transactional
-    public void saveSymptom(Symptom symptom){
+    public void saveSymptom(Symptom symptom) {
         symptomRepository.save(symptom);
     }
 
-    public void saveSystem(System system){
+    public void saveSystem(System system) {
         systemRepository.save(system);
     }
 
-    public Symptom findById(long id){
+    public Symptom findSymptomById(long id) {
         return symptomRepository.findById(id);
+    }
+
+    //TODO: Implement Optional.
+    public System findSystemById(long id) {
+        return systemRepository.findById(id).get();
+    }
+
+    @Transactional
+    public void addSymptomToSystem(Long systemId, Symptom symptom) {
+        Optional<System> optionalSystem = systemRepository.findById(systemId);
+        if (optionalSystem.isPresent()) {
+            System system = optionalSystem.get();
+            system.getSymptoms().add(symptom);
+            systemRepository.save(system);
+        } else {
+            throw new EntityNotFoundException("System not found with id " + systemId);
+        }
+    }
+
+    @Transactional
+    public void addSystemToSymptom(Long symptomId, System system) {
+        Optional<Symptom> optionalSymptom = symptomRepository.findById(symptomId);
+        if (optionalSymptom.isPresent()) {
+            Symptom symptom = optionalSymptom.get();
+            symptom.getSystems().add(system);
+            symptomRepository.save(symptom);
+        } else {
+            throw new EntityNotFoundException("Symptom not found with id " + symptomId);
+        }
     }
 
 

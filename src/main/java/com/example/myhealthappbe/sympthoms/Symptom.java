@@ -3,9 +3,14 @@ package com.example.myhealthappbe.sympthoms;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "item_table")
+@NoArgsConstructor
 public class Symptom {
 
     @Id
@@ -22,19 +27,18 @@ public class Symptom {
         return name;
     }
 
-    public System getSystem() {
-        return system;
+    public Set<System> getSystems() {
+        return systems;
     }
 
-    public Symptom(String name, System system) {
+    public Symptom(String name) {
         this.name = name;
-        this.system = system;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "system_id")
+
     @JsonBackReference
-    private System system;
+    @ManyToMany(mappedBy = "symptoms")
+    private Set<System> systems = new HashSet<>();
 
 
 }
