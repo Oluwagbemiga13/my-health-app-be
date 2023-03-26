@@ -1,37 +1,40 @@
 package com.example.myhealthappbe.entity;
 
-
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
-@Table(name = "symptom_table")
+@Table(name = "organ_table")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Symptom {
+public class Organ {
+
     @Builder
-    public Symptom(String name, Organ organ) {
+    public Organ(String name, List<Symptom> organs) {
         this.name = name;
-        this.organ = organ;
+        this.organs = organs;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    public long getId() {
-        return id;
-    }
 
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "organ_id")
-    private Organ organ;
+    public List<Symptom> getOrgans() {
+        return organs;
+    }
+
+    @OneToMany(mappedBy = "organ")
+    private List<Symptom> organs = new ArrayList<>();
 
 
 }

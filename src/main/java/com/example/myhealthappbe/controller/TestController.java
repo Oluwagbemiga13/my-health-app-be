@@ -1,7 +1,7 @@
 package com.example.myhealthappbe.controller;
 
 import com.example.myhealthappbe.entity.Symptom;
-import com.example.myhealthappbe.entity.System;
+import com.example.myhealthappbe.entity.Organ;
 import com.example.myhealthappbe.service.TestService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,15 +26,15 @@ public class TestController {
     public void testSave(@PathVariable String id) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
 
-        System system = new System("respiratory system");
+        Organ organ = Organ.builder().name("respiratory organ").build();
 
-        testService.saveSystem(system);
+        testService.saveSystem(organ);
 
-        long systemId = system.getId();
+        long systemId = organ.getId();
 
-        log.info("Created: " + objectMapper.writeValueAsString(system));
+        log.info("Created: " + objectMapper.writeValueAsString(organ));
 
-        Symptom symptom = new Symptom("Cough");
+        Symptom symptom =  Symptom.builder().name("Cough").build();
 
         testService.saveSymptom(symptom);
 
@@ -45,9 +45,9 @@ public class TestController {
 
         log.info("Symptom was retrieved : " + testService.findSymptomById(symptom.getId()).getName());
 
-        log.info("System was retrieved :" + objectMapper.writeValueAsString(testService.findSystemById(systemId)));
+        log.info("Organ was retrieved :" + objectMapper.writeValueAsString(testService.findSystemById(systemId)));
 
-        log.info("System with Symptoms : " + objectMapper.writeValueAsString(testService.findSymptomById(symptom.getId())));
+        log.info("Organ with Symptoms : " + objectMapper.writeValueAsString(testService.findSymptomById(symptom.getId())));
 
 
     }

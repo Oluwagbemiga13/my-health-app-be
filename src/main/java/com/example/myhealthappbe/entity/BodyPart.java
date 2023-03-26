@@ -4,18 +4,18 @@ import java.util.List;
 
 public class BodyPart {
     private String name;
-    private List<System> systems;
+    private List<Organ> organs;
 
-    public BodyPart(String name, List<System> systems) {
+    public BodyPart(String name, List<Organ> organs) {
         this.name = name;
-        this.systems = systems;
+        this.organs = organs;
     }
 
     public String getName() {
         return name;
     }
 
-    public List<System> getSystems() {
-        return systems;
+    public List<Organ> getSystems() {
+        return organs;
     }
 }

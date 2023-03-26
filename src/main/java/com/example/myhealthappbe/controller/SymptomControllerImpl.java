@@ -1,5 +1,7 @@
 package com.example.myhealthappbe.controller;
 
+import com.example.myhealthappbe.entity.Organ;
+import com.example.myhealthappbe.service.OrganService;
 import com.example.myhealthappbe.service.SymptomService;
 import com.example.myhealthappbe.entity.Symptom;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -20,19 +22,33 @@ public class SymptomControllerImpl implements SymptomController{
     private final SymptomService symptomService;
     private final ObjectMapper objectMapper;
 
+    private final OrganService organService;
+
     @Override
     public ResponseEntity<Symptom> testSave(String json) {
-        Symptom symptom = new Symptom();
+
+        log.info("Json {} accepted", json);
+        Symptom symptom;
         try{
             symptom = objectMapper.readValue(json, Symptom.class);
 
             // Process the symptom object
         } catch (Exception e) {
             log.error("Error processing symptom JSON data: {}", e.getMessage());
+            return ResponseEntity.badRequest().build();
             // Handle the exception
         }
         log.info("Symptom '{}' was read successfully.", symptom.getName());
+
+        Organ organ = symptom.getOrgan();
+
+        organService.saveOrgan(organ);
+
+        organService.saveOrgan(symptom.getOrgan());
+
         symptomService.saveSymptom(symptom);
+
+        //log.info("Symptom already exists: " + symptomService.checkIfSymptomExists(symptom).isPresent());
 
 
         return ResponseEntity.ok().build();
