@@ -1,4 +1,4 @@
-package com.example.myhealthappbe.sympthoms;
+package com.example.myhealthappbe.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "item_table")
+@Table(name = "system_table")
 @NoArgsConstructor
 public class Symptom {
 
@@ -27,18 +27,14 @@ public class Symptom {
         return name;
     }
 
-    public Set<System> getSystems() {
-        return systems;
-    }
 
     public Symptom(String name) {
         this.name = name;
     }
 
-
-    @JsonBackReference
-    @ManyToMany(mappedBy = "symptoms")
-    private Set<System> systems = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "system_id")
+    private System system;
 
 
 }

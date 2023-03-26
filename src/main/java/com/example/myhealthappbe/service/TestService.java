@@ -2,8 +2,8 @@ package com.example.myhealthappbe.service;
 
 import com.example.myhealthappbe.repository.SymptomRepository;
 import com.example.myhealthappbe.repository.SystemRepository;
-import com.example.myhealthappbe.sympthoms.Symptom;
-import com.example.myhealthappbe.sympthoms.System;
+import com.example.myhealthappbe.entity.Symptom;
+import com.example.myhealthappbe.entity.System;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -51,18 +51,5 @@ public class TestService {
             throw new EntityNotFoundException("System not found with id " + systemId);
         }
     }
-
-    @Transactional
-    public void addSystemToSymptom(Long symptomId, System system) {
-        Optional<Symptom> optionalSymptom = symptomRepository.findById(symptomId);
-        if (optionalSymptom.isPresent()) {
-            Symptom symptom = optionalSymptom.get();
-            symptom.getSystems().add(system);
-            symptomRepository.save(symptom);
-        } else {
-            throw new EntityNotFoundException("Symptom not found with id " + symptomId);
-        }
-    }
-
 
 }

@@ -1,4 +1,4 @@
-package com.example.myhealthappbe.sympthoms;
+package com.example.myhealthappbe.entity;
 
 public class SymptomLog {
 

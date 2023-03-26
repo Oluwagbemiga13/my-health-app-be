@@ -1,9 +1,11 @@
-package com.example.myhealthappbe.sympthoms;
+package com.example.myhealthappbe.entity;
 
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -18,16 +20,12 @@ public class System {
 
     private String name;
 
-    public Set<Symptom> getSymptoms() {
+    public List<Symptom> getSymptoms() {
         return symptoms;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(
-            name = "system_symptom",
-            joinColumns = @JoinColumn(name = "system_id"),
-            inverseJoinColumns = @JoinColumn(name = "symptom_id"))
-    private Set<Symptom> symptoms = new HashSet<>();
+    @OneToMany(mappedBy = "system")
+    private List<Symptom> symptoms = new ArrayList<>();
 
     public System(String name) {
         this.name = name;
