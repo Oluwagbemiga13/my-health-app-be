@@ -1,4 +1,4 @@
-package com.example.myhealthappbe.sympthoms;
+package com.example.myhealthappbe.entity;
 
 import java.util.List;
 
