@@ -38,14 +38,14 @@ public class TestController {
 
         testService.saveSymptom(symptom);
 
-        testService.addSymptomToSystem(systemId, symptom);
+//        testService.addSymptomToSystem(systemId, symptom);
 
 
         log.info("Created: " + objectMapper.writeValueAsString(symptom));
 
         log.info("Symptom was retrieved : " + testService.findSymptomById(symptom.getId()).getName());
 
-        log.info("Organ was retrieved :" + objectMapper.writeValueAsString(testService.findSystemById(systemId)));
+//        log.info("Organ was retrieved :" + objectMapper.writeValueAsString(testService.findSystemById(systemId)));
 
         log.info("Organ with Symptoms : " + objectMapper.writeValueAsString(testService.findSymptomById(symptom.getId())));
 
