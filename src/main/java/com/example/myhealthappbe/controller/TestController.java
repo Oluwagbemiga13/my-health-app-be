@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping(path = "/api/test")
+@RequestMapping(path = "/test")
 @RequiredArgsConstructor
 @Slf4j
 public class TestController {

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
-@RequestMapping(path = "/api/symptom")
+@RequestMapping(path = "/symptom")
 public interface SymptomController {
 
     @PostMapping(consumes = "application/json" /*, produces = "application/json"*/)
