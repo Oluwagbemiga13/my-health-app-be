@@ -17,9 +17,9 @@ import java.util.List;
 public class Organ {
 
     @Builder
-    public Organ(String name, List<Symptom> organs) {
+    public Organ(String name, List<Symptom> symptoms) {
         this.name = name;
-        this.organs = organs;
+        this.symptoms = symptoms;
     }
 
     @Id
@@ -30,11 +30,11 @@ public class Organ {
     private String name;
 
     public List<Symptom> getOrgans() {
-        return organs;
+        return symptoms;
     }
 
     @OneToMany(mappedBy = "organ")
-    private List<Symptom> organs = new ArrayList<>();
+    private List<Symptom> symptoms = new ArrayList<>();
 
 
 }

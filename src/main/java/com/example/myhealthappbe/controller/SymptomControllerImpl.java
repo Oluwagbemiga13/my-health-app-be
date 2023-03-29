@@ -5,6 +5,7 @@ import com.example.myhealthappbe.service.OrganService;
 import com.example.myhealthappbe.service.SymptomService;
 import com.example.myhealthappbe.entity.Symptom;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.coyote.Response;
