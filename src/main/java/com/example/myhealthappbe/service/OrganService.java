@@ -25,7 +25,8 @@ public class OrganService {
             log.info("Organ {} already exists. Skipping.", organ);
             return;
         }
-        organRepository.save(organ);
+        Organ createdOrgan = Organ.builder().name(organ.getName()).build();
+        organRepository.save(createdOrgan);
         log.info("Organ {} saved.", organ);
     }
 

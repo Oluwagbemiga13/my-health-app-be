@@ -1,6 +1,9 @@
 package com.example.myhealthappbe.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -23,15 +26,13 @@ public class Symptom {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    public long getId() {
-        return id;
-    }
 
+    @JsonProperty
     private String name;
 
     @ManyToOne
     @JoinColumn(name = "organ_id")
+    @JsonBackReference
     private Organ organ;
-
 
 }

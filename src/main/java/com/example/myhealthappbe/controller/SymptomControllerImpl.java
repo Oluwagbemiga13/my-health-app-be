@@ -1,5 +1,6 @@
 package com.example.myhealthappbe.controller;
 
+import com.example.myhealthappbe.dto.SymptomDto;
 import com.example.myhealthappbe.entity.Organ;
 import com.example.myhealthappbe.service.OrganService;
 import com.example.myhealthappbe.service.SymptomService;
@@ -26,28 +27,30 @@ public class SymptomControllerImpl implements SymptomController{
     private final OrganService organService;
 
     @Override
-    public ResponseEntity<Symptom> testSave(String json) {
+    public ResponseEntity<Symptom> testSave(SymptomDto json) {
 
-        log.info("Json {} accepted", json);
-        Symptom symptom;
-        try{
-            symptom = objectMapper.readValue(json, Symptom.class);
+        log.info(json.name());
 
-            // Process the symptom object
-        } catch (Exception e) {
-            log.error("Error processing symptom JSON data: {}", e.getMessage());
-            return ResponseEntity.badRequest().build();
-            // Handle the exception
-        }
-        log.info("Symptom '{}' was read successfully.", symptom.getName());
-
-        Organ organ = symptom.getOrgan();
-
-        organService.saveOrgan(organ);
-
-        organService.saveOrgan(symptom.getOrgan());
-
-        symptomService.saveSymptom(symptom);
+//        log.info("Json {} accepted", json);
+//        Symptom symptom;
+//        try{
+//            symptom = objectMapper.readValue(json, Symptom.class);
+//
+//            // Process the symptom object
+//        } catch (Exception e) {
+//            log.error("Error processing symptom JSON data: {}", e.getMessage());
+//            return ResponseEntity.badRequest().build();
+//            // Handle the exception
+//        }
+//        log.info("Symptom '{}' was read successfully.", symptom.getName());
+//
+//        Organ organ = symptom.getOrgan();
+//
+//        organService.saveOrgan(organ);
+//
+//        organService.saveOrgan(symptom.getOrgan());
+//
+//        symptomService.saveSymptom(symptom);
 
         //log.info("Symptom already exists: " + symptomService.checkIfSymptomExists(symptom).isPresent());
 

@@ -45,7 +45,7 @@ public class TestService {
         Optional<Organ> optionalSystem = organRepository.findById(systemId);
         if (optionalSystem.isPresent()) {
             Organ organ = optionalSystem.get();
-            organ.getOrgans().add(symptom);
+            organ.getSymptoms().add(symptom);
             organRepository.save(organ);
         } else {
             throw new EntityNotFoundException("Organ not found with id " + systemId);

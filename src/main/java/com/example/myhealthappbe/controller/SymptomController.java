@@ -1,5 +1,6 @@
 package com.example.myhealthappbe.controller;
 
+import com.example.myhealthappbe.dto.SymptomDto;
 import com.example.myhealthappbe.entity.Symptom;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ public interface SymptomController {
     ResponseEntity<Symptom> testSave(
             @RequestBody(description = "Symptom data to save", required = true,
                     content = @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Symptom.class)))
-            String json);
+                            schema = @Schema(implementation = SymptomDto.class)))
+            SymptomDto json);
 
 }

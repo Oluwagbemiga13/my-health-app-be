@@ -1,5 +1,7 @@
 package com.example.myhealthappbe.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -24,16 +26,18 @@ public class Organ {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty()
     private long id;
 
-
+    public Organ(String name){
+        this.name = name;
+        symptoms = new ArrayList<>();
+    }
+    @JsonProperty()
     private String name;
 
-    public List<Symptom> getOrgans() {
-        return symptoms;
-    }
-
     @OneToMany(mappedBy = "organ")
+    @JsonManagedReference
     private List<Symptom> symptoms = new ArrayList<>();
 
 
