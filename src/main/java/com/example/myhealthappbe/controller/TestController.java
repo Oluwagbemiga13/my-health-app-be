@@ -1,7 +1,7 @@
 package com.example.myhealthappbe.controller;
 
-import com.example.myhealthappbe.entity.Symptom;
-import com.example.myhealthappbe.entity.Organ;
+import com.example.myhealthappbe.entity.related.Symptom;
+import com.example.myhealthappbe.entity.related.Organ;
 import com.example.myhealthappbe.service.TestService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -45,18 +45,18 @@ public class TestController {
 
         Symptom symptom =  Symptom.builder().name("Cough").build();
 
-        testService.saveSymptom(symptom);
+        //testService.saveSymptom(symptom);
 
 //        testService.addSymptomToSystem(systemId, symptom);
 
 
         log.info("Created: " + objectMapper.writeValueAsString(symptom));
 
-        log.info("Symptom was retrieved : " + testService.findSymptomById(symptom.getId()).getName());
+        //log.info("Symptom was retrieved : " + testService.findSymptomById(symptom.getId()).getName());
 
 //        log.info("OrganDto was retrieved :" + objectMapper.writeValueAsString(testService.findSystemById(systemId)));
 
-        log.info("OrganDto with Symptoms : " + objectMapper.writeValueAsString(testService.findSymptomById(symptom.getId())));
+        //log.info("OrganDto with Symptoms : " + objectMapper.writeValueAsString(testService.findSymptomById(symptom.getId())));
 
 
     }

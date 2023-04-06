@@ -1,13 +1,14 @@
 package com.example.myhealthappbe.repository;
 
-import com.example.myhealthappbe.entity.Symptom;
+import com.example.myhealthappbe.entity.indipendent.SymptomInd;
+import com.example.myhealthappbe.entity.related.Symptom;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SymptomRepository extends JpaRepository<Symptom, Long> {
+public interface SymptomIndRepository extends JpaRepository<SymptomInd, Long> {
 
-    public Symptom findById(long id);
+    public SymptomInd findById(long id);
 
 //    @Query(value = "SELECT * FROM item_table i WHERE i.sold = FALSE",
 //            nativeQuery = true)

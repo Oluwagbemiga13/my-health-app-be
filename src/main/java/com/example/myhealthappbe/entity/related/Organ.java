@@ -1,4 +1,4 @@
-package com.example.myhealthappbe.entity;
+package com.example.myhealthappbe.entity.related;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;

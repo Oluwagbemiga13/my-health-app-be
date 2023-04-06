@@ -1,13 +1,10 @@
 package com.example.myhealthappbe.controller;
 
 import com.example.myhealthappbe.dto.independent.SymptomDto;
-import com.example.myhealthappbe.dto.related.SymptomWithOrganDto;
-import com.example.myhealthappbe.entity.Symptom;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 

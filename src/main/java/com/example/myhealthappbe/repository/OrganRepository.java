@@ -1,6 +1,6 @@
 package com.example.myhealthappbe.repository;
 
-import com.example.myhealthappbe.entity.Organ;
+import com.example.myhealthappbe.entity.related.Organ;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

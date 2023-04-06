@@ -1,10 +1,9 @@
 package com.example.myhealthappbe.controller;
 
 import com.example.myhealthappbe.dto.independent.SymptomDto;
-import com.example.myhealthappbe.dto.related.SymptomWithOrganDto;
+import com.example.myhealthappbe.mapper.SymptomMapper;
 import com.example.myhealthappbe.service.OrganService;
 import com.example.myhealthappbe.service.SymptomService;
-import com.example.myhealthappbe.entity.Symptom;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,12 +23,16 @@ public class SymptomControllerImpl implements SymptomController{
 
     private final OrganService organService;
 
+    private final SymptomMapper symptomMapper;
+
     @Override
-    public ResponseEntity<SymptomDto> testSave(SymptomDto json) {
+    public ResponseEntity<SymptomDto> testSave(SymptomDto symptomDto) {
 
-        log.info(json.getName());
+        log.info("Accepted: " + symptomDto.toString());
 
-        return ResponseEntity.ok(json);
+        symptomService.saveSymptom(symptomMapper.toEntity(symptomDto));
+
+        return ResponseEntity.ok(symptomDto);
     }
     }
 

@@ -1,9 +1,10 @@
 package com.example.myhealthappbe.service;
 
-import com.example.myhealthappbe.entity.Organ;
-import com.example.myhealthappbe.repository.SymptomRepository;
+import com.example.myhealthappbe.entity.indipendent.SymptomInd;
+import com.example.myhealthappbe.entity.related.Organ;
+import com.example.myhealthappbe.repository.SymptomIndRepository;
 import com.example.myhealthappbe.repository.OrganRepository;
-import com.example.myhealthappbe.entity.Symptom;
+import com.example.myhealthappbe.entity.related.Symptom;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -17,22 +18,18 @@ import java.util.Optional;
 
 public class TestService {
 
-    private final SymptomRepository symptomRepository;
+    private final SymptomIndRepository symptomIndRepository;
     private final OrganRepository organRepository;
 
     private final EntityManagerFactory entityManagerFactory;
 
     @Transactional
-    public void saveSymptom(Symptom symptom) {
-        symptomRepository.save(symptom);
+    public void saveSymptom(SymptomInd symptom) {
+        symptomIndRepository.save(symptom);
     }
 
     public void saveSystem(Organ organ) {
         organRepository.save(organ);
-    }
-
-    public Symptom findSymptomById(long id) {
-        return symptomRepository.findById(id);
     }
 
     //TODO: Implement Optional.

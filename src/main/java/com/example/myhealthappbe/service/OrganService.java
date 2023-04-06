@@ -1,7 +1,7 @@
 package com.example.myhealthappbe.service;
 
-import com.example.myhealthappbe.entity.Organ;
-import com.example.myhealthappbe.entity.Symptom;
+import com.example.myhealthappbe.entity.related.Organ;
+import com.example.myhealthappbe.entity.related.Symptom;
 import com.example.myhealthappbe.repository.OrganRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
