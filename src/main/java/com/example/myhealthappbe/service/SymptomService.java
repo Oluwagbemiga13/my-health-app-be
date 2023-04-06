@@ -22,14 +22,15 @@ public class SymptomService {
 
     public void saveSymptom(SymptomInd symptom) {
         symptomIndRepository.save(symptom);
-        log.info("Symptom '{}' was saved successfully.", symptom.getName());
+        log.info("Symptom '{}' was saved successfully.", symptom);
     }
 
+    public Optional<SymptomInd> findById(Long id){
+        return symptomIndRepository.findById(id);
+    }
 
-//    public Optional<Symptom> checkIfSymptomExists(Symptom symptom){
-//        Optional optional = symptomIndRepository.findSymptomsByNameAndSystem(symptom.getName(), symptom.getOrgan().getName()).get(0);
-//
-//        return optional;
-//    }
+    public boolean existById(Long id){
+        return symptomIndRepository.existsById(id);
+    }
 
 }

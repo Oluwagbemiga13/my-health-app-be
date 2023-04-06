@@ -1,16 +1,14 @@
 package com.example.myhealthappbe.entity.indipendent;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "symptom_ind_table")
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public class SymptomInd {
     @Builder
     public SymptomInd(String name) {

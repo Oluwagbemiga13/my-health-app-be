@@ -18,4 +18,10 @@ public interface SymptomController {
     @ApiResponse(responseCode = "400", description = "Bad Request")
     ResponseEntity<SymptomDto> testSave( @RequestBody SymptomDto json);
 
+    @GetMapping(path = "/{id}", produces = "application/json")
+    @Operation(summary = "Find Symptom by ID", description = "Find Symptom by ID")
+    @ApiResponse(responseCode = "200", description = "Success", content = @Content(mediaType = "application/json"))
+    @ApiResponse(responseCode = "400", description = "Bad Request")
+    public ResponseEntity<SymptomDto> findById(@PathVariable("id") String id);
+
 }

@@ -16,8 +16,10 @@ public class SymptomDto {
     private OrganDto organDto;
 
     @JsonCreator
-    public SymptomDto(@JsonProperty("name") String name,
+    public SymptomDto(@JsonProperty("id") Long id,
+                      @JsonProperty("name") String name,
                       @JsonProperty("organDto") OrganDto organDto) {
+        this.id = id;
         this.name = name;
         this.organDto = organDto;
     }
