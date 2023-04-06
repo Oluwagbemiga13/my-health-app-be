@@ -54,9 +54,9 @@ public class TestController {
 
         log.info("Symptom was retrieved : " + testService.findSymptomById(symptom.getId()).getName());
 
-//        log.info("Organ was retrieved :" + objectMapper.writeValueAsString(testService.findSystemById(systemId)));
+//        log.info("OrganDto was retrieved :" + objectMapper.writeValueAsString(testService.findSystemById(systemId)));
 
-        log.info("Organ with Symptoms : " + objectMapper.writeValueAsString(testService.findSymptomById(symptom.getId())));
+        log.info("OrganDto with Symptoms : " + objectMapper.writeValueAsString(testService.findSymptomById(symptom.getId())));
 
 
     }

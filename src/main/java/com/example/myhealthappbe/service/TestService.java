@@ -48,7 +48,7 @@ public class TestService {
             organ.getSymptoms().add(symptom);
             organRepository.save(organ);
         } else {
-            throw new EntityNotFoundException("Organ not found with id " + systemId);
+            throw new EntityNotFoundException("OrganDto not found with id " + systemId);
         }
     }
 

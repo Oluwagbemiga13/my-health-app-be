@@ -1,12 +1,10 @@
 package com.example.myhealthappbe.controller;
 
-import com.example.myhealthappbe.dto.OrganDto;
-import com.example.myhealthappbe.entity.Organ;
-import com.example.myhealthappbe.entity.Symptom;
+import com.example.myhealthappbe.dto.independent.OrganDto;
+import com.example.myhealthappbe.dto.related.OrganWithSymptomsDto;
 import com.example.myhealthappbe.mapper.OrganMapper;
 import com.example.myhealthappbe.service.OrganService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.swagger.v3.core.util.Json;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -29,12 +27,12 @@ public class OrganControllerImpl implements OrganController {
     public ResponseEntity<OrganDto> testSave(OrganDto organDto) {
 
 
-        log.info("Json {} accepted", organDto);
-//        Organ organ ;
+        log.info("Json {} accepted", organDto.getName());
+//        OrganDto organ ;
 //        try{
-//            //organ = objectMapper.readValue(organDto, Organ.class);
-//            //organ = Organ.builder().name(organDto.name()).build();
-//            organ = new Organ(organDto.name());
+//            //organ = objectMapper.readValue(organDto, OrganDto.class);
+//            //organ = OrganDto.builder().name(organDto.name()).build();
+//            organ = new OrganDto(organDto.name());
 //            //organ = organMapper.toEntity(organDto);
 //
 //            // Process the symptom object
@@ -43,7 +41,7 @@ public class OrganControllerImpl implements OrganController {
 //            return ResponseEntity.badRequest().build();
 //            // Handle the exception
 //        }
-//        log.info("Organ '{}' was read successfully.", organ.getName());
+//        log.info("OrganDto '{}' was read successfully.", organ.getName());
 //
 //        organService.saveOrgan(organ);
 

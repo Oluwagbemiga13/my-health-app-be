@@ -22,12 +22,12 @@ public class OrganService {
 
     public void saveOrgan(Organ organ) {
         if (organRepository.existsByName(organ.getName())) {
-            log.info("Organ {} already exists. Skipping.", organ);
+            log.info("OrganDto {} already exists. Skipping.", organ);
             return;
         }
         Organ createdOrgan = Organ.builder().name(organ.getName()).build();
         organRepository.save(createdOrgan);
-        log.info("Organ {} saved.", organ);
+        log.info("OrganDto {} saved.", organ);
     }
 
     public Organ findByName(String name) {

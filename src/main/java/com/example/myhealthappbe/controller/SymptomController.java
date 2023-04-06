@@ -1,8 +1,8 @@
 package com.example.myhealthappbe.controller;
 
-import com.example.myhealthappbe.dto.SymptomDto;
+import com.example.myhealthappbe.dto.independent.SymptomDto;
+import com.example.myhealthappbe.dto.related.SymptomWithOrganDto;
 import com.example.myhealthappbe.entity.Symptom;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Operation;
@@ -19,10 +19,6 @@ public interface SymptomController {
     @Operation(summary = "Save Symptom", description = "Save a new Symptom")
     @ApiResponse(responseCode = "201", description = "Success", content = @Content(mediaType = "application/json"))
     @ApiResponse(responseCode = "400", description = "Bad Request")
-    ResponseEntity<Symptom> testSave(
-            @RequestBody(description = "Symptom data to save", required = true,
-                    content = @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = SymptomDto.class)))
-            SymptomDto json);
+    ResponseEntity<SymptomDto> testSave( @RequestBody SymptomDto json);
 
 }
